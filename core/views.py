@@ -38,7 +38,7 @@ def index_estacionamento(request, id):
 		dados['estacionamento'] = estacionamento
 		try:
 			vagas = Vaga.objects.filter(estacionamento=estacionamento)
-			dados['vagas'] = vagas
+			dados['vagas'] = enumerate(vagas)
 		except Exception as e:
 			raise e
 	except Exception as e:

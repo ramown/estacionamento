@@ -5,9 +5,30 @@
 <h2>{{ estacionamento.nome }}</h2>
 
 {% if vagas %}
-{% for item in vagas %}
-	<h4>{{ item }}</h4>
+<table>
+	<thead>
+		<th>#</th>
+		<th>Vaga</th>
+		<th>Veiculo</th>
+		<th>Ocupada</th>
+	</thead>
+{% for i,vaga in vagas %}
+	<tr>
+		<td>{{ i }}</td>
+		<td>{{ vaga.nome }}</td>
+		<td>
+		{{ vaga.veiculo.nome }}</td>
+		<td>
+			{% if vaga.ocupada  %}
+				Sim
+			{% else %}
+				{{ vaga.ocupada }}
+			{% endif %}
+		</td>
+	</tr>
+
 {% endfor %}
+</table>
 {% endif %}
 
 {% endblock %}
