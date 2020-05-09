@@ -2,8 +2,7 @@
 
 {% block content %}
 <h3>Estacionamento</h3>
-<h1>{{ id }}</h1>
-<h2>{{ estacionamento }}</h2>
+<h2>{{ estacionamento.nome }}</h2>
 
 {% if vagas %}
 {% for item in vagas %}

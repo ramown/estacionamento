@@ -49,14 +49,20 @@ def new_estacionamento(request):
 	if request.POST:
 		nome = request.POST['nome']
 		capacidade = request.POST['capacidade']
+		try:
+		 	ativo = True if request.POST['ativo'] is not None else False
+		except Exception as e:
+		 	ativo = False
+
 		Estacionamento.objects.create(
 			nome=nome,
-			cap_max=capacidade
+			cap_max=capacidade,
+			ativo = ativo
 			)
 		estacionamento = Estacionamento.objects.get(nome=nome)
 		gerar_vagas(estacionamento)
 		return redirect('/')
-		#estacionamento = Estacionamento.objects.get(nome=nome)
+		
 	return render(request, 'estacionamento/form.html')
 
 def gerar_vagas(estacionamento):
