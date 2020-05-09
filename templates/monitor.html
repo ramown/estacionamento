@@ -1,0 +1,25 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+<h2>Monitor</h2>
+<br><hr><br>
+<div align="center">
+	<form action="." method="POST">
+		{% csrf_token %}
+		<input type="text" name="busca_veiculo" size="40" placeholder="Digite o nome do veiculo">
+		<input type="submit" name="buscar" value="Buscar">
+	</form>
+	{% if veiculo %}
+	<table>
+		<tr>
+			<td>{{ veiculo }}</td>
+			<td>{{ vaga }}</td>
+			<td>Entrar/Sair</td>
+		</tr>
+	</table>
+	{% elif vazio %}
+		{{ vazio }}
+	{% endif%}
+</div>
+<br><hr><br>
+{% endblock %}

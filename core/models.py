@@ -24,6 +24,7 @@ class Estacionamento(models.Model):
 
 class Vaga(models.Model):
 	nome    = models.CharField(max_length=16)
+	veiculo = models.OneToOneField(Veiculo, models.SET_NULL, blank=True,null=True,)
 	ocupada = models.BooleanField(default=False)
 	estacionamento = models.ForeignKey(Estacionamento, on_delete=models.CASCADE)
 
