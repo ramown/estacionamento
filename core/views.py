@@ -104,13 +104,19 @@ def ocupar_vaga(request, id_vaga, id_veiculo):
 		vaga.veiculo = Veiculo.objects.get(id=id_veiculo)
 		vaga.ocupada = True
 		vaga.save()
-		return redirect('index_estacionamento')
+		return redirect('monitor')
 	except Exception as e:
 		raise e
 
-def liberar_vaga(request, id_vaga, id_veiculo):
-
-	return HttpResponse('VAGA LIBERADA com SUCESSo')
+def liberar_vaga(request, id_vaga):
+	try:
+		vaga = Vaga.objects.get(id=id_vaga)
+		vaga.veiculo = None
+		vaga.ocupada = False
+		vaga.save()
+		return redirect('monitor')
+	except Exception as e:
+		raise e
 
 def listar_estacionamentos():
 	return Estacionamento.objects.all()

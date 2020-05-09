@@ -17,7 +17,7 @@
 			{% if vaga == '--' %}
 				<td><a href="{% url 'selecionar_veiculo' veiculo.id %}">Ocupar</a>/ Liberar</td>
 			{% else %}
-				<td>Ocupar/<a href="{% url 'liberar_vaga' vaga.id veiculo.id %}">Liberar</a></td>
+				<td>Ocupar/<a href="{% url 'liberar_vaga' vaga.id %}">Liberar</a></td>
 			{% endif %}
 			
 		</tr>
