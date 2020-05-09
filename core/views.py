@@ -81,3 +81,36 @@ def gerar_nome(numero):
 		return "0{}".format(numero)
 	else:
 		return "{}".format(numero)
+
+
+def selecionar_veiculo(request, id_veiculo):
+	try:
+		veiculo = Veiculo.objects.get(id=id_veiculo)
+		return escolher_vaga(request, veiculo)
+	except Exception as e:
+		raise e
+
+def escolher_vaga(request, veiculo):
+	dados={'veiculo': veiculo}
+	estacionamentos = Estacionamento.objects.all()
+	vagas = Vaga.objects.filter(ocupada=False)
+	dados['estacionamentos'] = estacionamentos
+	dados['vagas'] = vagas
+	return render(request, 'vaga.html',dados)
+
+def ocupar_vaga(request, id_vaga, id_veiculo):
+	try:
+		vaga = Vaga.objects.get(id=id_vaga)
+		vaga.veiculo = Veiculo.objects.get(id=id_veiculo)
+		vaga.ocupada = True
+		vaga.save()
+		return redirect('index_estacionamento')
+	except Exception as e:
+		raise e
+
+def liberar_vaga(request, id_vaga, id_veiculo):
+
+	return HttpResponse('VAGA LIBERADA com SUCESSo')
+
+def listar_estacionamentos():
+	return Estacionamento.objects.all()

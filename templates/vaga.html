@@ -1,0 +1,17 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+{{ veiculo }}
+<hr>
+{% for item in estacionamentos %}
+{{ item }}<br>
+	{% for vaga in vagas %}
+		{% if vaga.estacionamento == item %}
+			<a href="{% url 'ocupar_vaga' vaga.id veiculo.id  %}">{{ vaga }}</a><br>
+		{% endif %}
+	{% endfor %}
+	<hr>
+{% endfor %}
+
+
+{% endblock %}

@@ -9,12 +9,17 @@
 		<input type="text" name="busca_veiculo" size="40" placeholder="Digite o nome do veiculo">
 		<input type="submit" name="buscar" value="Buscar">
 	</form>
-	{% if veiculo %}
+	{% if veiculo  %}
 	<table>
 		<tr>
 			<td>{{ veiculo }}</td>
 			<td>{{ vaga }}</td>
-			<td>Entrar/Sair</td>
+			{% if vaga == '--' %}
+				<td><a href="{% url 'selecionar_veiculo' veiculo.id %}">Ocupar</a>/ Liberar</td>
+			{% else %}
+				<td>Ocupar/<a href="{% url 'liberar_vaga' vaga.id veiculo.id %}">Liberar</a></td>
+			{% endif %}
+			
 		</tr>
 	</table>
 	{% elif vazio %}
