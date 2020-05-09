@@ -22,4 +22,18 @@
 	{% endif%}
 </div>
 <br><hr><br>
+<div align="center">
+	<h4>Estacionamentos</h4>
+	{% if estacionamentos %}
+		{% for item in estacionamentos %}
+			<tr>
+				<td>{{ item.nome }}</td>
+				<td><a href="{% url 'index_estacionamento' item.id %}"><button>Ver</button></a><br></td>
+			</tr>
+		{% endfor %}
+	{% endif %}
+	<a href="{% url 'new_estacionamento' %}">Novo</a>
+	
+
+</div>
 {% endblock %}

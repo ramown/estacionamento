@@ -1,0 +1,24 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+<div align="center">
+	<h2>Novo Estacionamento</h2>
+		<form action="{% url 'new_estacionamento' %}" method="POST">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td><label>Nome: </label></td>
+					<td align="center"><input type="text" name="nome"></td>
+				</tr>
+				<tr>
+					<td><label>Capacidade: </label></td>
+					<td align="center"><input type="number" name="capacidade"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right"><input type="submit" name="enviar"></td>
+				</tr>
+			</table>
+
+		</form>
+</div>
+{% endblock %}

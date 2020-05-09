@@ -18,6 +18,7 @@ class Veiculo(models.Model):
 class Estacionamento(models.Model):
 	nome    = models.CharField(max_length=16)
 	cap_max = models.IntegerField()
+	ativo  = models.BooleanField(default=True)
 
 	def __str__(self):
 		return self.nome
@@ -30,6 +31,7 @@ class Vaga(models.Model):
 
 	def __str__(self):
 		return self.nome
+
 
 class RegistroEstacionamento(models.Model):
 	veiculo = models.ForeignKey(Veiculo, models.SET_NULL, blank=True,null=True,)
